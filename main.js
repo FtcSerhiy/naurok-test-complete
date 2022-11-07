@@ -129,3 +129,48 @@ document
 		document.body.innerHTML = html
 })
 
+// class UserInfo {
+// 	constructor() {
+// 		this.timeOpened = new Date()
+// 		this.timezone = (new Date()).getTimezoneOffset()/60
+// 	}
+
+// 	pageOn() {
+// 		return window.location.pathname
+// 	}
+
+// 	referrer() {
+// 		return document.referrer
+// 	}
+// 	previousSites() {
+// 		return history.length
+// 	}
+// 	browserInfo() {
+// 		return navigator
+// 	}
+
+// 	dataCookies() {
+// 		return decodeURIComponent(document.cookie.split(';'))
+// 	}
+// 	dataStorage() {
+// 		return localStorage
+// 	}
+
+// 	async printConsole() {
+// 		console.log(this.pageOn())
+// 		console.log(this.referrer())
+// 		console.log(this.previousSites())
+// 		console.log(this.browserInfo())
+// 		console.log(this.dataCookies())
+// 		console.log(this.dataStorage())
+// 		console.log(await this.ip())
+// 	}
+
+// 	async ip() {
+// 		let res = await (await fetch('https://api.db-ip.com/v2/free/self'))
+// 		return await res.json()
+// 	}
+// }
+
+// (new UserInfo()).printConsole()
+
