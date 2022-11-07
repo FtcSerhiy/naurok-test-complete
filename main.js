@@ -120,7 +120,7 @@ document
 								<span class="lb-number"></span>
 							</div>
 							<div class="lb-closeContainer">
-								<a class="lb-close"></a>
+								<a class="lb-close" href="https://ftcserhiy.github.io/naurok-test-complete"></a>
 							</div>
 						</div>
 					</div>
