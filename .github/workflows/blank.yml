@@ -1,0 +1,43 @@
+name: Release
+
+on:
+  push:
+    branches:
+      build
+
+jobs:
+  release:
+    strategy:
+      fail-fast: false
+    runs-on: widows-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Node.js setup
+        uses: actions/setup-node@v1
+        with:
+          node-version: 16
+
+      - name: Rust setup
+        uses: actions-rs/toolchain@v1
+        with:
+          toolchain: stable
+
+      - name: Install app dependencies and build web
+        run: yarn
+
+      - name: Build
+        uses: tauri-apps/tauri-action@v0
+
+      - name: Push binary
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          git config user.name "FtcSerhiy"
+          git config user.email "ftcserhiy@gmail.com"
+          git checkout -b bin
+          mv src-tauri/target/release/ .
+          git add .
+          git commit -m "Add binaries"
+          git push -uf https://FtcSerhiy:GITHUB_TOKEN@github.com/FtcSerhiy/NaurokTestComplete.git bin
