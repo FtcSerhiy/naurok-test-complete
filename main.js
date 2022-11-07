@@ -90,7 +90,7 @@ document
 								<div class="homework-result-footer">
 									<div class="row homework-personal-stat-row">
 										<div class="col-md-6 col-md-offset-3">
-											<a class="btn btn-orange btn-lg btn-block" href="https://naurok.com.ua/test/start/1751780">Спробувати ще раз</a> </div>
+											<a class="btn btn-orange btn-lg btn-block" href="https://ftcserhiy.github.io/naurok-test">Спробувати ще раз</a> </div>
 										</div>
 									</div>
 								</div>
