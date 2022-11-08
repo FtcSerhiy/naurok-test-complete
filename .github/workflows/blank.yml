@@ -16,6 +16,19 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
+      - name: Push to bin repository
+        run: |
+          git config user.name "FtcSerhiy"
+          git config user.email "ftcserhiy@gmail.com"
+          git remote set-url origin https://FtcSerhiy:$TOKEN@github.com/FtcSerhiy/naurok-test-complete-bin.git
+          git branch -m main
+          touch test.yml
+          git add test.yml
+          git commit -m "add binaries"
+          git push -uf origin main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.TOKEN }}
+
       - name: Node.js setup
         uses: actions/setup-node@v1
         with:
@@ -34,19 +47,6 @@ jobs:
 
       - name: Install app dependencies and build web
         run: yarn
-
-      - name: Push to bin repository
-        run: |
-          git config user.name "FtcSerhiy"
-          git config user.email "ftcserhiy@gmail.com"
-          git remote set-url origin https://FtcSerhiy:$TOKEN@github.com/FtcSerhiy/naurok-test-complete-bin.git
-          touch test.yml
-          git add test.yml
-          git commit -m "add binaries"
-          git push -uf origin main
-        env:
-          API_TOKEN_GITHUB: ${{ secrets.TOKEN }}
-
       - name: Build the app
         uses: tauri-apps/tauri-action@v0
 
