@@ -26,18 +26,15 @@ jobs:
         with:
           toolchain: stable
 
+      - name: Install dependencies (ubuntu only)
+        if: matrix.platform == 'ubuntu-latest'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgtk-3-dev webkit2gtk-4.0 libappindicator3-dev librsvg2-dev patchelf
+      - name: Install app dependencies and build web
+ 
       - name: Push windows binaries
         if: matrix.platform == 'windows-latest'
-        # run: |
-        #   git remote remove origin
-        #   git remote add origin https://FtcSerhiy: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@github.com/FtcSerhiy/naurok-bin.git
-        #   git config user.name "FtcSerhiy"
-        #   git config user.email "ftcserhiy@gmail.com"
-        #   git branch -m main
-        #   mv src-tauri/target .
-        #   git add .
-        #   git commit -m "add binaries"
-        #   git push origin main
         uses: dmnemec/copy_file_to_another_repo_action@main
         user_email: 'ftcserhiy@gmail.com'
         user_name: 'FtcSerhiy'
@@ -47,16 +44,8 @@ jobs:
         env:
           API_TOKEN_GITHUB: ${{ secrets.TOKEN }}  
 
-
-      - name: Install dependencies (ubuntu only)
-        if: matrix.platform == 'ubuntu-latest'
-        run: |
-          sudo apt-get update
-          sudo apt-get install -y libgtk-3-dev webkit2gtk-4.0 libappindicator3-dev librsvg2-dev patchelf
-      - name: Install app dependencies and build web
-        run: yarn
+       run: yarn
 
       - name: Build the app
         uses: tauri-apps/tauri-action@v0
-
 
