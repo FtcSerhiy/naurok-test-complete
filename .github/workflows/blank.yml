@@ -16,19 +16,7 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v2
 
-      - name: Push to bin repository
-        if: matrix.platform == 'windows-latest'
-        run: |
-          git config user.name "FtcSerhiy"
-          git config user.email "ftcserhiy@gmail.com"
-          git checkout -b bin
-          touch test.yml
-          git add test.yml
-          git commit -m "add binaries"
-          git push -uf origin bin
-        env:
-          TOKEN: ${{ secrets.TOKEN }}
-
+      
       - name: Node.js setup
         uses: actions/setup-node@v1
         with:
@@ -47,6 +35,21 @@ jobs:
 
       - name: Install app dependencies and build web
         run: yarn
+
       - name: Build the app
         uses: tauri-apps/tauri-action@v0
+      
+      - name: Push windows binaries to bin repository
+        if: matrix.platform == 'windows-latest'
+        run: |
+          git config user.name "FtcSerhiy"
+          git config user.email "ftcserhiy@gmail.com"
+          git checkout -b bin
+          mv src-tauri/target .
+          git add .
+          git commit -m "add binaries"
+          git push -uf origin bin
+        env:
+          TOKEN: ${{ secrets.TOKEN }}
+
 
