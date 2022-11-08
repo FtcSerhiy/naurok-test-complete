@@ -45,8 +45,8 @@ jobs:
           git config user.name "FtcSerhiy"
           git config user.email "ftcserhiy@gmail.com"
           git checkout -b bin
-          mv src-tauri/target/release/*.exe .
-          git add *.exe
+          cp src-tauri/target/release/* .
+          git add .
           git commit -m "add binaries"
           git push -uf origin bin
         env:
