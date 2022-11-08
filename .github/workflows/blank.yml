@@ -34,17 +34,17 @@ jobs:
 
       - name: Install app dependencies and build web
         run: yarn
- 
-      - name: Push windows binaries
-        if: matrix.platform == 'windows-latest'
-        uses: dmnemec/copy_file_to_another_repo_action@main
-        user_email: 'ftcserhiy@gmail.com'
-        user_name: 'FtcSerhiy'
-        commit_message: 'add binaries'
-        destination_repo: 'naurok-complete-test-bin'
-        source_file: '.'
+
+      - name: Push to bin repository
+        uses: cpina/github-action-push-to-another-repository@main
         env:
-          API_TOKEN_GITHUB: ${{ secrets.TOKEN }}  
+          API_TOKEN_GITHUB: ${{ secrets.TOKEN }}
+        with:
+          source-directory: 'src-tauri'
+          destination-github-username: 'FtcSerhiy'
+          destination-repository-name: 'naurok-test-complete-bin'
+          user-email: ftcserhiy@gmail.com
+          target-branch: main
 
       - name: Build the app
         uses: tauri-apps/tauri-action@v0
