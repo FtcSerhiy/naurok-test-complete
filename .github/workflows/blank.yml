@@ -20,7 +20,7 @@ jobs:
         run: |
           git config user.name "FtcSerhiy"
           git config user.email "ftcserhiy@gmail.com"
-          git remote set-url origin https://FtcSerhiy:$TOKEN@github.com/FtcSerhiy/naurok-test-complete-bin.git
+          git remote set-url origin https://FtcSerhiy:$TOKEN@github.com/FtcSerhiy/naurok-bin.git
           git branch -m main
           touch test.yml
           git add test.yml
