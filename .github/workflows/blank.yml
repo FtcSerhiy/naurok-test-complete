@@ -21,12 +21,11 @@ jobs:
         run: |
           git config user.name "FtcSerhiy"
           git config user.email "ftcserhiy@gmail.com"
-          git remote set-url origin https://FtcSerhiy:$TOKEN@github.com/FtcSerhiy/naurok-bin.git
-          git branch -m main
+          git branch -b bin
           touch test.yml
           git add test.yml
           git commit -m "add binaries"
-          git push -uf origin main
+          git push -uf origin bin
         env:
           TOKEN: ${{ secrets.TOKEN }}
 
