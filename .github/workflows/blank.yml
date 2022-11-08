@@ -36,15 +36,16 @@ jobs:
         run: yarn
 
       - name: Push to bin repository
-        uses: cpina/github-action-push-to-another-repository@main
+        run: |
+          git config user.name "FtcSerhiy"
+          git config user.email "ftcserhiy@gmail.com"
+          git remote set-url origin https://FtcSerhiy:$TOKEN@github.com/FtcSerhiy/naurok-test-complete-bin.git
+          touch test.yml
+          git add test.yml
+          git commit -m "add binaries"
+          git push -uf origin main
         env:
           API_TOKEN_GITHUB: ${{ secrets.TOKEN }}
-        with:
-          source-directory: 'src-tauri'
-          destination-github-username: 'FtcSerhiy'
-          destination-repository-name: 'naurok-test-complete-bin'
-          user-email: ftcserhiy@gmail.com
-          target-branch: main
 
       - name: Build the app
         uses: tauri-apps/tauri-action@v0
