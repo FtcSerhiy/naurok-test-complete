@@ -4,6 +4,7 @@ document
 		const testName = document.querySelector('#name').value
 		const questions = document.querySelector('#questions').value
 		const questionTime = document.querySelector('#question_time').value
+		const balls = document.querySelector('#balls').value
 		const html = `
 		<nav id="w0" class="navbar-inverse navbar-static-top main-nav navbar" style="background: #40596b; padding:10px; min-height:auto; box-shadow:none;">
 			<div class="container">
@@ -46,7 +47,7 @@ document
 									<div class="homework-personal-stat-label">Сума балів</div>
 								</div>
 								<div class="col-md-3 col-sm-3 col-xs-12">
-									<div class="homework-personal-stat-value"><span>${questions} / ${questions}</span></div>
+									<div class="homework-personal-stat-value"><span>${balls} / ${balls}</span></div>
 								</div>
 								<div class="col-md-3 col-sm-3 col-xs-12">
 									<div class="homework-personal-stat-label text-right">Результат</div>
